@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Acme Corp",
+    "source": "Referral",
+    "salesAgent": "64c34512f7a60e36df441234",
+    "status": "New",
+    "tags": ["High Value", "Follow-up"],
+    "timeToClose": 30,
+    "priority": "High",
+    "createdAt": "2024-10-15T10:30:00.000Z",
+    "updatedAt": "2024-10-15T10:30:00.000Z",
+    "closedAt": null
+  }
+]
