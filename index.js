@@ -18,7 +18,7 @@ app.use(express.json())
 
 initializeDatabase()
 
-const commentData = JSON.parse(fs.readFileSync('commentsData.json', 'utf-8'))
+// const commentData = JSON.parse(fs.readFileSync('commentsData.json', 'utf-8'))
 const leadsData = JSON.parse(fs.readFileSync('leadsData.json', 'utf-8'))
 const salesAgentData = JSON.parse(fs.readFileSync('salesAgentData.json','utf-8'))
  
@@ -70,7 +70,7 @@ email: salesAgent.email,
         console.log("An error occured while seeding the data", error)
     }    
 }
-seedData()
+// seedData()
 
 const corsOptions = {
   origin: '*',
