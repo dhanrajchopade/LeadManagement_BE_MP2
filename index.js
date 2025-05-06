@@ -23,53 +23,53 @@ initializeDatabase()
 // const salesAgentData = JSON.parse(fs.readFileSync('salesAgentData.json','utf-8'))
  
  
-async function seedData() {
-    try{
+// async function seedData() {
+//     try{
 
-        // Leads Seeding
-        for(const lead of leadsData){
-            const newLead = new Lead({
-name: lead.name,
-source: lead.source,
-salesAgent: lead.salesAgent,
-status: lead.status,
-tags: lead.tags,
-timeToClose:lead.timeToClose,
-priority:lead.priority,
-createdAt:lead.createdAt,
-updatedAt: lead.updatedAt,
-closedAt:lead.closedAt,
-            })
-            await newLead.save()
-        }
-        console.log("Leads seeded successfully.")
+//         // Leads Seeding
+//         for(const lead of leadsData){
+//             const newLead = new Lead({
+// name: lead.name,
+// source: lead.source,
+// salesAgent: lead.salesAgent,
+// status: lead.status,
+// tags: lead.tags,
+// timeToClose:lead.timeToClose,
+// priority:lead.priority,
+// createdAt:lead.createdAt,
+// updatedAt: lead.updatedAt,
+// closedAt:lead.closedAt,
+//             })
+//             await newLead.save()
+//         }
+//         console.log("Leads seeded successfully.")
 
 
-        // SalesAgent Data Seeding
-        for (const salesAgent of salesAgentData){
-            const newsalesAgent = new SalesAgent({
-name: salesAgent.name,
-email: salesAgent.email,
-            })
-            await newsalesAgent.save()
-        }
-        console.log("Sales Agent Data seeded successfully.")
+//         // SalesAgent Data Seeding
+//         for (const salesAgent of salesAgentData){
+//             const newsalesAgent = new SalesAgent({
+// name: salesAgent.name,
+// email: salesAgent.email,
+//             })
+//             await newsalesAgent.save()
+//         }
+//         console.log("Sales Agent Data seeded successfully.")
 
-        // Comments Seeding
-        for(const comment of commentData){
-            const newComments = new  Comment({
-                commentText: comment.commentText,
+//         // Comments Seeding
+//         for(const comment of commentData){
+//             const newComments = new  Comment({
+//                 commentText: comment.commentText,
                
                
-            })
-            await newComments.save()
-        }
-        console.log("Comments Data seeded successfully.")
+//             })
+//             await newComments.save()
+//         }
+//         console.log("Comments Data seeded successfully.")
 
-    }catch(error){
-        console.log("An error occured while seeding the data", error)
-    }    
-}
+//     }catch(error){
+//         console.log("An error occured while seeding the data", error)
+//     }    
+// }
 // seedData()
 
 const corsOptions = {
