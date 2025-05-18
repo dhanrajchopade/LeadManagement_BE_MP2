@@ -98,6 +98,20 @@ app.get('/leads', async (req, res) => {
     }
 });
 
+// Get a lead by ID
+app.get('/leads/:id', async (req, res) => {
+    try {
+        const lead = await Lead.findById(req.params.id);
+        if (!lead) {
+            return res.status(404).json({ error: "Lead not found." });
+        }
+        res.json(lead);
+    } catch (error) {
+        res.status(500).json({ error: "Failed to fetch lead." });
+    }
+});
+
+
 // Add details to lead (PATCHING)
 app.put('/leads/:id', async (req, res) => {
     try {
