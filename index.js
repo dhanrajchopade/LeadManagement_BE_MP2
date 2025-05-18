@@ -118,7 +118,7 @@ app.post('/leads', async(req,res)=>{
         await newLead.save()
         res.status(201).json({message:"Lead added to database successfully. "})
     }catch(error){
-        res.status(500).json({error:"Failed to add item to wishlist."})
+        res.status(500).json({error:"Failed to add lead to database."})
     }
 })
 
