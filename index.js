@@ -174,9 +174,21 @@ app.post("/sales-agents", async(req,res)=>{
     }
 })
 
+// Delete a Sales Agent
+app.delete("/sales-agents/:id", async (req, res) => {
+    try {
+        const salesAgent = await SalesAgent.findByIdAndDelete(req.params.id);
+        if (!salesAgent) {
+            return res.status(404).json({ error: "Sales Agent not found" });
+        }
+        res.status(200).json({ message: "Sales Agent deleted successfully." });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "Failed to delete Sales Agent." });
+    }
+});
 
 // Routes for Comments (2 routes)
-
 // Add a comment to a specific lead
 app.post('/leads/:id/comments', async (req, res) => {
     try {
