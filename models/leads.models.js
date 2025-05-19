@@ -47,6 +47,11 @@ const leadSchema = new mongoose.Schema({
   closedAt: {
     type: Date,  // The date when the lead was closed (optional, used when status is "Closed")
   },
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Comment' // Reference to Comment model
+    },
 });
 
 // Middleware to update the `updatedAt` field on each save
