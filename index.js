@@ -32,6 +32,7 @@ initializeDatabase()
 // name: lead.name,
 // source: lead.source,
 // salesAgent: lead.salesAgent,
+// comments:lead.comments,
 // status: lead.status,
 // tags: lead.tags,
 // timeToClose:lead.timeToClose,
