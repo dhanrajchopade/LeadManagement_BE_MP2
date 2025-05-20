@@ -189,20 +189,14 @@ app.delete("/sales-agents/:id", async (req, res) => {
     }
 });
 
+ 
+
 // Routes for Comments (2 routes)
-// Add a comment to a specific lead
-app.post('/leads/:id/comments', async (req, res) => {
+
+// Adding new comment
+app.post("/comments", async (req, res) => {
     try {
-        const lead = await Lead.findById(req.params.id);
-        if (!lead) {
-            return res.status(404).json({ error: "Lead not found." });
-        }
-
-        const newComment = new Comment({
-        
-            commentText: req.body.commentText
-        });
-
+        const newComment = new Comment(req.body);
         await newComment.save();
         res.status(201).json({ message: "Comment added successfully." });
     } catch (error) {
@@ -211,13 +205,10 @@ app.post('/leads/:id/comments', async (req, res) => {
 });
 
 
-  // Get comments for a specific lead
-app.get('/leads/:id/comments', async (req, res) => {
+// Get all Comments
+app.get('/comments', async (req, res) => {
     try {
-        const comments = await Comment.find({ lead: req.params.id }).populate('author', 'name email');
-        if (comments.length === 0) {
-            return res.status(404).json({ error: "No comments found for this lead." });
-        }
+        const comments = await Comment.find();
         res.json(comments);
     } catch (error) {
         res.status(500).json({ error: "Failed to fetch comments." });
