@@ -16,6 +16,11 @@ const leadSchema = new mongoose.Schema({
     ref: 'SalesAgent',  // Reference to SalesAgent model
     required: [true, 'Sales Agent is required'],
   },
+    comments:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'Comment',
+  }],
+  
   status: {
     type: String,
     required: true,
