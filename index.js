@@ -193,12 +193,18 @@ app.delete("/sales-agents/:id", async (req, res) => {
 
 // Routes for Comments (2 routes)
 
-// Adding new comment
-app.post("/comments", async (req, res) => {
+// Add a comment and link it to the lead
+app.post('/leads/:id/comments', async (req, res) => {
     try {
-        const newComment = new Comment(req.body);
+        const lead = await Lead.findById(req.params.id);
+        if (!lead) {
+            return res.status(404).json({ error: "Lead not found." });
+        }
+        const newComment = new Comment({ commentText: req.body.commentText });
         await newComment.save();
-        res.status(201).json({ message: "Comment added successfully." });
+        lead.comments.push(newComment._id);
+        await lead.save();
+        res.status(201).json({ message: "Comment added and linked successfully." });
     } catch (error) {
         res.status(500).json({ error: "Failed to add comment." });
     }
